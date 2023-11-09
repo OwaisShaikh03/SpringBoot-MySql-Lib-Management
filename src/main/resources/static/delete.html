@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management System - Delete Book</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Basic styling for navigation bar */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        /* Additional styles for cleaner look */
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        .content {
+            padding: 20px;
+            background-color: #f4f4f4;
+            min-height: calc(100vh - 90px); /* Subtract header and navbar heights */
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-container {
+            width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Library Management System - Delete Book</h1>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Home</a>
+            <a class="navbar-brand" href="view.html">View</a>
+            <a class="navbar-brand" href="delete.html">Delete</a>
+            <a class="navbar-brand" href="update.html">Update</a>
+            <a class="navbar-brand" href="insert.html">Insert</a>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="form-container">
+            <h2>Delete a Book</h2>
+            <form id="deleteForm">
+                <div class="form-group">
+                    <label for="bookId">Book ID:</label>
+                    <input type="text" class="form-control" id="bookId" placeholder="Enter book ID to delete" required>
+                </div>
+                <button type="button" class="btn btn-danger" onclick="deleteBook()">Delete</button>
+                <div id="message" style="margin-top: 20px;"></div> <!-- Add a div for displaying messages -->
+            </form>
+        </div>
+    </div>
+    <script>
+        function deleteBook() {
+    const bookId = document.getElementById('bookId').value;
+    const messageContainer = document.getElementById('message'); // Get the message div
+            
+   
+    fetch(`http://localhost:8080/book/${bookId}`, {
+        method: 'DELETE',
+    })
+    .then(response => {
+        if (response.status === 200) {
+            
+            messageContainer.innerHTML = '<div class="alert alert-success">Book deleted successfully</div>';
+            
+            document.getElementById('deleteForm').reset();
+        } else {
+            
+            messageContainer.innerHTML = '<div class="alert alert-danger">Error deleting the book</div>';
+        }
+    })
+    .catch(error => {
+        
+        console.error('Error:', error);
+        
+        messageContainer.innerHTML = '<div class="alert alert-danger">Error deleting the book</div>';
+    }); 
+        }
+    </script>
+</body>
+</html>
