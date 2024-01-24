@@ -1,0 +1,7 @@
+Eclipse IDE for Java Developers (includes Incubating components)
+
+Version: 2023-06 (4.28.0)
+Build id: 20230608-1333
+(c) Copyright Eclipse contributors and others 2000, 2023.  All rights reserved. Eclipse and the Eclipse logo are trademarks of the Eclipse Foundation, Inc., https://www.eclipse.org/. The Eclipse logo cannot be altered without Eclipses permission. Eclipse logos are provided for use under the Eclipse logo and trademark guidelines, https://www.eclipse.org/logotm/. Oracle and Java are trademarks or registered trademarks of Oracle and/or its affiliates. Other names may be trademarks of their respective owners.
+
+This product includes software developed by other open source projects including the Apache Software Foundation, https://www.apache.org/.
